@@ -11,7 +11,7 @@ dependencies {
     testAnnotationProcessor("com.uber.nullaway:nullaway:+")
     errorprone("com.google.errorprone:error_prone_core:+")
     implementation("com.google.errorprone:error_prone_annotations:+")
-    implementation("com.github.spotbugs:spotbugs-annotations:+")
+    implementation("com.google.code.findbugs:jsr305:+")
 }
 
 tasks.withType<JavaCompile>().configureEach {
