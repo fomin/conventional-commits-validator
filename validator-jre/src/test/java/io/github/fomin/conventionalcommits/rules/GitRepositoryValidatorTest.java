@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.util.List;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -40,6 +41,21 @@ class GitRepositoryValidatorTest {
     try (Git git = Git.init().setDirectory(projectDir.toFile()).call()) {
       git.commit().setMessage("type(scope): description1\n").call();
       git.commit().setMessage("type(scope): description2\n").call();
+    }
+    RuleSet ruleSet = RulesParser.parse("");
+    List<ValidationResult> validationResults =
+        GitRepositoryValidator.validate(projectDir.toFile(), "HEAD", "HEAD^", ruleSet);
+    assertTrue(validationResults.isEmpty());
+  }
+
+  @Test
+  void ok_ignore_merge_commit(@TempDir Path projectDir) throws GitAPIException {
+    try (Git git = Git.init().setDirectory(projectDir.toFile()).call()) {
+      RevCommit revCommit1 = git.commit().setMessage("type(scope): description1\n").call();
+      RevCommit revCommit2 = git.commit().setMessage("type(scope): description2\n").call();
+      git.checkout().setCreateBranch(true).setStartPoint(revCommit1).setName("branch").call();
+      git.commit().setMessage("type(scope): description3\n").call();
+      git.merge().include(revCommit2).call();
     }
     RuleSet ruleSet = RulesParser.parse("");
     List<ValidationResult> validationResults =

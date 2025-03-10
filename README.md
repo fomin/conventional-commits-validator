@@ -20,7 +20,7 @@ Replace `plugin-version` with the latest plugin version.
 ## Tasks
 
 The plugin adds the `checkCommits` task to your project. This task validates the commits in the project according to the
-configuration. This task is added as a dependency to the `check` task.
+configuration. This task is added as a dependency to the `check` task. Merge commits are ignored during validation.
 
 ## Configuration
 

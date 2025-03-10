@@ -32,6 +32,9 @@ public final class GitRepositoryValidator {
         }
 
         for (RevCommit commit : revWalk) {
+          if (commit.getParentCount() > 1) {
+            continue;
+          }
           String fullMessage = commit.getFullMessage();
           commit.getId().getName();
           List<String> errors = CommitMessageValidator.validate(ruleSet, fullMessage);
