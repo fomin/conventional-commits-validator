@@ -11,7 +11,7 @@ Add the following to your `build.gradle.kts` file:
 
 ```kotlin
 plugins {
-    id("io.github.fomin.conventional-commits") version "plugin-version"
+    id("io.github.fomin.conventional-commits-validator") version "plugin-version"
 }
 ```
 
