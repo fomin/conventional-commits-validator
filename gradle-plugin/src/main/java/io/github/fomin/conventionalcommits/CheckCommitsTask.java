@@ -10,6 +10,7 @@ import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.InputDirectory;
 import org.gradle.api.tasks.InputFile;
 import org.gradle.api.tasks.InputFiles;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.Optional;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.workers.WorkQueue;
@@ -33,6 +34,9 @@ public abstract class CheckCommitsTask extends DefaultTask {
   @Optional
   public abstract RegularFileProperty getConfigurationFile();
 
+  @Internal
+  public abstract DirectoryProperty getResolvedProjectDir();
+
   @InputFiles
   public abstract ConfigurableFileCollection getClasspath();
 
@@ -53,7 +57,7 @@ public abstract class CheckCommitsTask extends DefaultTask {
           parameters.getEndRef().set(getEndRef());
           parameters.getRepoDir().set(getRepoDir());
           parameters.getConfigurationFile().set(getConfigurationFile());
-          parameters.getProjectDir().set(getProject().getProjectDir());
+          parameters.getProjectDir().set(getResolvedProjectDir());
         });
   }
 }

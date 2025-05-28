@@ -44,6 +44,7 @@ public class ConventionalCommitsGradlePlugin implements Plugin<Project> {
               task.getRepoDir().convention(conventionalCommitsExtension.getRepoDir());
               task.getConfigurationFile()
                   .convention(conventionalCommitsExtension.getConfigurationFile());
+              task.getResolvedProjectDir().convention(project.getLayout().getProjectDirectory());
             });
     project.getTasks().named("check", task -> task.dependsOn("checkCommits"));
   }
