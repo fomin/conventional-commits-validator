@@ -118,10 +118,9 @@ footer-token:
     - Co-authored-by
 
 footers:
-  Close:
+  Closes:
     required: true
-    regex: ^[A-Z][A-Z0-9]*-[0-9]+$
+    regex: ^[A-Z][A-Z0-9]*-[0-9]+$\n
   Co-authored-by:
-    required: true
-    regex: ^[^<>]+ <[^<>]+@[^<>]+>$
+    regex: ^[^<>]+ <[^<>]+@[^<>]+>$\n
 ```
