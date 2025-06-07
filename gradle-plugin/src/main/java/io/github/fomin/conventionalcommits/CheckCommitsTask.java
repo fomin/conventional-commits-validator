@@ -1,5 +1,6 @@
 package io.github.fomin.conventionalcommits;
 
+import java.io.File;
 import javax.inject.Inject;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.file.ConfigurableFileCollection;
@@ -7,7 +8,6 @@ import org.gradle.api.file.DirectoryProperty;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
 import org.gradle.api.tasks.Input;
-import org.gradle.api.tasks.InputDirectory;
 import org.gradle.api.tasks.InputFile;
 import org.gradle.api.tasks.InputFiles;
 import org.gradle.api.tasks.Internal;
@@ -26,9 +26,9 @@ public abstract class CheckCommitsTask extends DefaultTask {
   @Optional
   public abstract Property<String> getEndRef();
 
-  @InputDirectory
+  @Input
   @Optional
-  public abstract DirectoryProperty getRepoDir();
+  public abstract Property<File> getRepoDir();
 
   @InputFile
   @Optional

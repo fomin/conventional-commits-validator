@@ -1,6 +1,6 @@
 package io.github.fomin.conventionalcommits;
 
-import org.gradle.api.file.DirectoryProperty;
+import java.io.File;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
 
@@ -9,7 +9,7 @@ public interface ConventionalCommitsExtension {
 
   Property<String> getEndRef();
 
-  DirectoryProperty getRepoDir();
+  Property<File> getRepoDir();
 
   RegularFileProperty getConfigurationFile();
 }

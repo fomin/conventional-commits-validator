@@ -1,5 +1,6 @@
 package io.github.fomin.conventionalcommits;
 
+import java.io.File;
 import org.gradle.api.file.DirectoryProperty;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.provider.Property;
@@ -10,7 +11,7 @@ public interface CheckCommitsWorkParameters extends WorkParameters {
 
   Property<String> getEndRef();
 
-  DirectoryProperty getRepoDir();
+  Property<File> getRepoDir();
 
   RegularFileProperty getConfigurationFile();
 

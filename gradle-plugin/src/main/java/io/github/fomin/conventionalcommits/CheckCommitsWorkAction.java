@@ -38,7 +38,7 @@ public abstract class CheckCommitsWorkAction implements WorkAction<CheckCommitsW
     }
 
     RuleSet ruleSet = RulesParser.parse(configuration);
-    File repoDir = parameters.getRepoDir().getAsFile().getOrElse(projectDir);
+    File repoDir = parameters.getRepoDir().getOrElse(projectDir);
     String startRef = parameters.getStartRef().getOrElse("HEAD");
     String endRef = parameters.getEndRef().getOrElse("HEAD^");
     List<ValidationResult> validationResults =
